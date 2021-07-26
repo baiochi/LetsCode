@@ -1,6 +1,7 @@
 # Functions
 import random
 from time import sleep
+import os
 
 # read file and transform into a list with all uppercase characters
 """
@@ -112,7 +113,7 @@ def printCorrectWords(hits, word):
             current += word[i]
         else:
             current += '_'
-    print("> Palavra: " + current)
+    print("> Palavra:    " + current)
 
 """
 Imprime apenas as letras das tentativas erradas.
@@ -124,10 +125,11 @@ def printWrongWords(wrongList):
     print("> Tentativas: ", end=" ")
     for i in range(len(wrongList)):
         print(wrongList[i] + "  ", end="")
-    print('')
+    print('\n')
 
 """
-Recebe o input do usuário e verifica se a letra inserida é válida ou se já foi inserida.
+Recebe o input do usuário e verifica se a letra inserida é válida 
+ou se já foi verificada anteriormente.
 
 @params:
     list::hits : lista de letras corretas
@@ -136,10 +138,10 @@ Recebe o input do usuário e verifica se a letra inserida é válida ou se já f
 def verifyInput(hits, wrongList) :
     while True:
         letter = input("Escolha uma letra: ").upper()
-        if len(letter) > 1 or type(letter) != str:
-            print("Dado inválido!")
+        if len(letter) > 1 or letter.isnumeric():
+            print("Dado inválido, digite apenas uma letra.")
         elif letter in hits or letter in wrongList:
-            print("Letra já escolhida")
+            print("Letra já escolhida.")
         else:
             break
     return letter
@@ -157,9 +159,11 @@ Verifica se a letra inserida faz parte da palavra
 def validateLetter(letter, word, hits, fails, wrongList):
     if letter in word:
         print("Acerto miserávi!")
+        sleep(1)
         hits.append(letter)
     else:
         print("Errou!")
+        sleep(1)
         wrongList.append(letter)
         fails += 1
 
@@ -195,9 +199,12 @@ def playGame(wordList):
                 sleep(5)
             break
         elif fails > 5: # game over
+            os.system("cls")
             printHang(fails)
-            print("E morreu...")
-            sleep(5)
+            print("E morreu...\n")
+            print("A palavra correta era: " + word)
+            sleep(3)
             break
 
+        os.system("cls")
         pass
