@@ -2,6 +2,9 @@
 import random
 
 # read file and transform into a list with all uppercase characters
+"""
+Faz a leitura da arquivo e armazena em uma lista
+"""
 def readList(fileName):
     l = []
     with open(fileName, "r") as file:
@@ -9,7 +12,12 @@ def readList(fileName):
             l.append(line[:-1].upper())
     return l
 
-# select difficulty
+"""
+Seleciona a dificuldade do jogo, alterando qual arquivo será selecionado.
+Return:
+    list::wordList : lista com as palavras escolhidas
+    str : Nome da dificuldade
+"""
 def changeLevel():
     # building...
     print("Escolha a dificuldade:")
@@ -21,19 +29,24 @@ def changeLevel():
         if choice == 1:
             print("Dificuldade -> Facil")
             wordList = readList('Modulo_1\Projeto\easy_list.txt')
-            return wordList
+            return wordList, "[Easy]"
         elif choice == 2:
             print("Dificuldade -> Media")
             wordList = readList('Modulo_1\Projeto\medium_list.txt')
-            return wordList
+            return wordList, "[Normal]"
         elif choice == 3:
             print("Dificuldade -> Dificil")
             wordList = readList('Modulo_1\Projeto\hard_list.txt')
-            return wordList
+            return wordList, ["Hard"]
         else:
-            print("Se ja esta dificil escolher um numero, imagina jogar...")
+            print("Opcao inválida, digita novamente.")
 
-def printHang(fails, hits, word):
+"""
+Desenha a forca conforme o progesso do jogo
+@params:
+    int::fails : determina o desenho atual da forca
+"""
+def printHang(fails):
     if fails == 0:
         print("+----+")
         print("│")
@@ -77,6 +90,13 @@ def printHang(fails, hits, word):
         print("│   / \\")
         print("│")
 
+"""
+Imprime apenas as letras certas, deixando "_" nas que ainda não foram descobertas.
+
+@params
+    list::hits : lista de letras corretas
+    str::word : palavra que será executada a verificacao
+"""
 def printCorrectWords(hits, word):
     current = ''
     for i in range(len(word)):
@@ -86,14 +106,26 @@ def printCorrectWords(hits, word):
             current += '_'
     print("> Palavra: " + current)
 
+"""
+Imprime apenas as letras das tentativas erradas.
+
+@params
+    list::wrongList : lista com as letras erradas
+"""
 def printWrongWords(wrongList):
     print("> Tentativas: ")
     for i in range(len(wrongList)):
         print(wrongList[i] + "  ", end="")
     print('')
 
-# verify if letter has already been typed
-def letterCheck(hits, wrongList) :
+"""
+Recebe o input do usuário e verifica se a letra inserida é válida ou se já foi inserida.
+
+@params:
+    list::hits : lista de letras corretas
+    list::wrongList : lista com as letras erradas
+"""
+def verifyInput(hits, wrongList) :
     while True:
         letter = input("Escolha uma letra: ").upper()
         if len(letter) > 1 or type(letter) != str:
@@ -104,7 +136,16 @@ def letterCheck(hits, wrongList) :
             break
     return letter
 
-# verify if letter is a correct answer
+"""
+Verifica se a letra inserida faz parte da palavra
+
+@params:
+    str::letter : letra recebida pelo usuário
+    str::word : palavra que será executada a verificacao
+    list::hits : lista de letras corretas
+    int::fails : usada como contador para as letras erradas
+    list::wrongList : lista com as letras erradas 
+"""
 def validateLetter(letter, word, hits, fails, wrongList):
     if letter in word:
         print("Acerto miserávi!")
@@ -118,30 +159,34 @@ def validateLetter(letter, word, hits, fails, wrongList):
 
 # Start new game
 def playGame(wordList):
+
+    # cria contador, listas vazias e usando random para escolher a palavra
     fails = 0
     hits = []
     wrongList = []
-    print("\nIniciando o jogo...")
     word = random.choice(wordList)
-    #print("A palavra escolhida foi: ", word, "!")
+    print("\nIniciando o jogo...")
 
     while True:
-        printHang(fails, hits, word)
+        
+        # Impressão dos dados
+        printHang(fails)
         printCorrectWords(hits, word)
         printWrongWords(wrongList)
-        letter = letterCheck(hits, wrongList)
+        # Input do usuário e validacao dos dados
+        letter = verifyInput(hits, wrongList)
         hits, fails, wrongList = validateLetter(letter, word, hits, fails, wrongList)
         
+        # Verifica se o usuário acertou a palavra inteira ou se esgotou as tentativas
         if len(set(hits)) == len(set(word)): # win state
             if fails==0:
                 print("Perfect!")
             else: 
                 print("Parabains!")
             break
-        elif fails > 5: #game over
-            printHang(fails, hits, word)
+        elif fails > 5: # game over
+            printHang(fails)
             print("You're dead.")
             break
 
-        # clear consle
-    #return
+        pass
