@@ -1,5 +1,6 @@
 # Functions
 import random
+from time import sleep
 
 # read file and transform into a list with all uppercase characters
 """
@@ -48,47 +49,54 @@ Desenha a forca conforme o progesso do jogo
 """
 def printHang(fails):
     if fails == 0:
-        print("+----+")
-        print("│")
-        print("│")
-        print("│")
-        print("│")
+        print("\
+        +----+   \n\
+        │        \n\
+        │        \n\
+        │        \n\
+        │        \n")
     elif fails == 1:
-        print("+----+")
-        print("│    ☺")
-        print("│")
-        print("│")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │        \n\
+        │        \n\
+        │        \n")
     elif fails == 2:
-        print("+----+")
-        print("│    Ꝺ")
-        print("│    │")
-        print("│")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │    │   \n\
+        │        \n\
+        │        \n")
     elif fails == 3:
-        print("+----+")
-        print("│    Ꝺ")
-        print("│   /│")
-        print("│")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │   /│   \n\
+        │        \n\
+        │        \n")
     elif fails == 4:
-        print("+----+")
-        print("│    Ꝺ")
-        print("│   /│\\")
-        print("│")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │   /│\\ \n\
+        │        \n\
+        │        \n")
     elif fails == 5:
-        print("+----+")
-        print("│    Ꝺ")
-        print("│   /│\\")
-        print("│   /")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │   /│\\ \n\
+        │   /    \n\
+        │        \n")
     elif fails == 6:
-        print("+----+")
-        print("│    Ꝺ")
-        print("│   /│\\")
-        print("│   / \\")
-        print("│")
+        print("\
+        +----+   \n\
+        │    ☻   \n\
+        │   /│\\ \n\
+        │   / \\ \n\
+        │        \n")
 
 """
 Imprime apenas as letras certas, deixando "_" nas que ainda não foram descobertas.
@@ -113,7 +121,7 @@ Imprime apenas as letras das tentativas erradas.
     list::wrongList : lista com as letras erradas
 """
 def printWrongWords(wrongList):
-    print("> Tentativas: ")
+    print("> Tentativas: ", end=" ")
     for i in range(len(wrongList)):
         print(wrongList[i] + "  ", end="")
     print('')
@@ -181,12 +189,15 @@ def playGame(wordList):
         if len(set(hits)) == len(set(word)): # win state
             if fails==0:
                 print("Perfect!")
+                sleep(5)
             else: 
                 print("Parabains!")
+                sleep(5)
             break
         elif fails > 5: # game over
             printHang(fails)
-            print("You're dead.")
+            print("E morreu...")
+            sleep(5)
             break
 
         pass

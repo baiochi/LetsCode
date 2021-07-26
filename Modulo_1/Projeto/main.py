@@ -6,6 +6,7 @@ Projeto Módulo I - Jogo da Forca
 """
 # Imports
 from functions import *
+from time import sleep
 import os
 
 os.system("cls")
@@ -26,18 +27,19 @@ while continuar:
 \n")
 
     try:
-        menuOpc = int(input(f"  >>> MENU <<<\n\
+        menuOpc = int(input(f"  -> MENU <-\n\
 Escolha uma opcao:\n\
 1 - Iniciar Jogo   {level}\n\
 2 - Mudar dificuldade\n\
 3 - Sair\n"))
-
     except ValueError:
        print("Opcao inválida! Digite novamente: ")
+       sleep(2)
        continue
     if menuOpc == 1:
         playGame(wordList)
     elif menuOpc == 2:
+        os.system("cls")
         wordList, level = changeLevel()
         os.system("cls")
     elif menuOpc == 3:
@@ -45,5 +47,6 @@ Escolha uma opcao:\n\
         continuar = False
     else:
         print("Opcao inválida! Digite novamente: ")
+        sleep(2)
     
     pass
