@@ -15,26 +15,28 @@ continuar = True
 wordList = readList("Modulo_1\Projeto\medium_list.txt")
 level = "[Normal]"
 
+# prank()
+
 while continuar:
 
-    print("\n\
+    print(colorText("[[red]]\n\
        __                         __         ____                     \n\
       / /___  ____ _____     ____/ /___ _   / __/___  ______________ _\n\
  __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_/ __ \/ ___/ ___/ __ `/\n\
 / /_/ / /_/ / /_/ / /_/ /  / /_/ / /_/ /  / __/ /_/ / /  / /__/ /_/ / \n\
 \____/\____/\__, /\____/   \__,_/\__,_/  /_/  \____/_/   \___/\__,_/  \n\
            /____/                                                     \n\
-\n")
-
-    try:
-        menuOpc = int(input(f"  -> MENU <-\n\
+\n[[white]]"))
+    print(colorText(f"  -> MENU <-\n\
 Escolha uma opcao:\n\
-1 - Iniciar Jogo   {level}\n\
-2 - Mudar dificuldade\n\
-3 - Sair\n"))
+[[blue]]1[[white]] - Iniciar Jogo   {level}\n\
+[[blue]]2[[white]] - Mudar dificuldade\n\
+[[blue]]3[[white]] - Sair"))
+    try:
+        menuOpc = int(input())
     except ValueError:
        print("Opcao inválida! Digite novamente: ")
-       sleep(2)
+       sleep(1)
        continue
     if menuOpc == 1:
         playGame(wordList)
@@ -47,6 +49,6 @@ Escolha uma opcao:\n\
         continuar = False
     else:
         print("Opcao inválida! Digite novamente: ")
-        sleep(2)
+        sleep(1)
     
     pass

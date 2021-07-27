@@ -3,7 +3,27 @@ import random
 from time import sleep
 import os
 
-# read file and transform into a list with all uppercase characters
+# Customize colors
+# extracted from https://gist.github.com/richardbwest/17674f84961e975d47cf106da9728dd2
+COLORS = {\
+"black":"\u001b[30;1m",
+"red": "\u001b[31;1m",
+"green":"\u001b[32m",
+"yellow":"\u001b[33;1m",
+"blue":"\u001b[34;1m",
+"magenta":"\u001b[35m",
+"cyan": "\u001b[36m",
+"white":"\u001b[37m",
+"yellow-background":"\u001b[43m",
+"black-background":"\u001b[40m",
+"cyan-background":"\u001b[46;1m",
+}
+
+def colorText(text):
+    for color in COLORS: text = text.replace("[[" + color + "]]", COLORS[color])
+    return text
+
+
 """
 Faz a leitura da arquivo e armazena em uma lista
 """
@@ -51,49 +71,54 @@ Desenha a forca conforme o progesso do jogo
 def printHang(fails):
     if fails == 0:
         print("\
-        +----+   \n\
-        │        \n\
+        ______   \n\
+        │⁄   │   \n\
         │        \n\
         │        \n\
         │        \n")
     elif fails == 1:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
-        │        \n\
         │        \n\
         │        \n")
     elif fails == 2:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
         │    │   \n\
         │        \n\
         │        \n")
     elif fails == 3:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
         │   /│   \n\
         │        \n\
         │        \n")
     elif fails == 4:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
         │   /│\\ \n\
         │        \n\
         │        \n")
     elif fails == 5:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
         │   /│\\ \n\
         │   /    \n\
         │        \n")
     elif fails == 6:
         print("\
-        +----+   \n\
+        ______   \n\
+        │⁄   │   \n\
         │    ☻   \n\
         │   /│\\ \n\
         │   / \\ \n\
@@ -113,7 +138,7 @@ def printCorrectWords(hits, word):
             current += word[i]
         else:
             current += '_'
-    print("> Palavra:    " + current)
+    print(colorText("> [[blue]]Palavra:[[white]]    " + current))
 
 """
 Imprime apenas as letras das tentativas erradas.
@@ -122,7 +147,7 @@ Imprime apenas as letras das tentativas erradas.
     list::wrongList : lista com as letras erradas
 """
 def printWrongWords(wrongList):
-    print("> Tentativas: ", end=" ")
+    print(colorText("> [[red]]Tentativas:[[white]] "), end=" ")
     for i in range(len(wrongList)):
         print(wrongList[i] + "  ", end="")
     print('\n')
@@ -169,7 +194,7 @@ def validateLetter(letter, word, hits, fails, wrongList):
 
     return hits, fails, wrongList
 
-# Start new game
+# Funcao principal que inicia o jogo
 def playGame(wordList):
 
     # cria contador, listas vazias e usando random para escolher a palavra
@@ -208,3 +233,20 @@ def playGame(wordList):
 
         os.system("cls")
         pass
+
+
+def prank():
+    print(colorText("[[red]]\n\
+   ___                            _          _   _        _  _            \n\
+  |_  |                          | |        | | | |      | || |           \n\
+    | |  ___    __ _   ___     __| |  __ _  | | | |  ___ | || |__    __ _ \n\
+    | | / _ \  / _` | / _ \   / _` | / _` | | | | | / _ \| || '_ \  / _` |\n\
+/\__/ /| (_) || (_| || (_) | | (_| || (_| | \ \_/ /|  __/| || | | || (_| |\n\
+\____/  \___/  \__, | \___/   \__,_| \__,_|  \___/  \___||_||_| |_| \__,_|\n\
+                __/ |                                                     \n\
+               |___/                                                      \n[[white]]"))
+    sleep(5)
+    os.system("cls")
+    print("mentira kkk")
+    sleep(1)
+    os.system("cls")
