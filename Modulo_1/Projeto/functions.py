@@ -33,7 +33,7 @@ def loadGame(gameFile):
         try:
             choice = int(input("Which file you want to load? (Type 0 to return) "))
             if choice == 0:
-                return gameFile, False
+                return gameFile, True
             elif choice > len(os.listdir(path)):
                 print("File not found. Please try again.")
             else:
@@ -68,7 +68,7 @@ def loadGame(gameFile):
         print(colorText(f"File [[yellow]]{fileName}[[white]] loaded successfully!"))
         sleep(2)
 
-        return dictonary, True
+        return dictonary, False
     
     except IndexError:
         print(colorText(f"File [[yellow]]{fileName}[[white]] may be in wrong format or corrupted"))
@@ -105,7 +105,7 @@ def saveGame(gameFile):
         for key, value in gameFile.items():  
             file.write(f'{key}:{value}\n')
     file.close()
-    print("[[cyan]]Saved successfully![[white]]")
+    print(colorText("[[cyan]]Saved successfully![[white]]"))
     sleep(1)
 
 """

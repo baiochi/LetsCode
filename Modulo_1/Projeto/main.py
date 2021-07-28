@@ -7,7 +7,7 @@ Projeto Módulo I - The Hang Game
 from functions import *
 
 continuar = True
-loadSuccess = False
+newGame = True
 file = open("Modulo_1\Projeto\word_list\debug_list.txt", 'r')
 wordList = [item for item in file.read().split('\n')]
 file.close()
@@ -22,15 +22,15 @@ gameFile = {
 
 
 
-prank()
+#prank()
 
 while continuar:
 
     os.system("cls")
-    if loadSuccess:
-        game = "Continue"
-    else:
+    if newGame:
         game = "New Game"
+    else:
+        game = "Continue"
 
     print(colorText("[[red]]\n\
        __                         __         ____                     \n\
@@ -43,34 +43,49 @@ while continuar:
     print(colorText(f" MAIN MENU\n\
 [[blue]]1[[white]] - {game}\n\
 [[blue]]2[[white]] - Load Game\n\
-[[blue]]3[[white]] - Change Difficulty  [{level}]\n\
-[[blue]]4[[white]] - Exit"))
+[[blue]]3[[white]] - Save Game\n\
+[[blue]]4[[white]] - Change Difficulty  [{level}]\n\
+[[blue]]5[[white]] - Exit"))
 
     try:
-        menuOpc = int(input())
+        menuOpt = int(input())
     except ValueError:
        print("Invalid option! Type again: ")
        sleep(1)
        continue
     # New game
-    if menuOpc == 1:
+    if menuOpt == 1:
         if verifyList(wordList, gameFile, level):
             print("You already finished this level, please change difficulty in menu.")
             sleep(2)
         else:
             playGame(wordList, gameFile, level)
+            newGame = False
     
     # Open a save file
-    elif menuOpc == 2:
-        gameFile, loadSuccess = loadGame(gameFile)
-
+    elif menuOpt == 2:
+        gameFile, newGame = loadGame(gameFile)
+    
+    # Save current game
+    elif menuOpt == 3:
+        try:
+            choice = input("Save the current game? (Yes/No)").upper()
+        except ValueError:
+            print("Invalid value.")
+        if choice == 'YES':
+            saveGame(gameFile)
+        elif choice == 'NO':
+            continue
+        else:
+            print("Invalid value.")
+        sleep(1)
     # Change difficulty
-    elif menuOpc == 3:
+    elif menuOpt == 4:
         os.system("cls")
         wordList, level = changeLevel(gameFile)
     
     # Exit
-    elif menuOpc == 4:
+    elif menuOpt == 5:
         print(colorText("\n[[cyan]]Bye! Thanks for playing![[white]]"))
         continuar = False
     # Wrong input
