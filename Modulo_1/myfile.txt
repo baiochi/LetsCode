@@ -1,4 +1,0 @@
-round:1
-Easy:['batata', 'torresmo', 'bacon']
-Normal:['cebola', 'potato']
-Medium:['hotdog', 'croissant', 'candy']
