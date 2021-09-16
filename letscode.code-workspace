@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "Modulo 2 - Estrutura de Dados"
+		},
+		{
+			"path": "Modulo 1 - Lógica de Programação e POO"
+		}
+	],
+	"settings": {
+		"jupyter.jupyterServerType": "local"
+	}
+}
