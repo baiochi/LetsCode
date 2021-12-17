@@ -1,5 +1,0 @@
-round:2
-Easy:[]
-Normal:[]
-Hard:[]
-Debug:['OBSTACLE', 'OBSTACLE']
