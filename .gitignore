@@ -133,3 +133,13 @@ dmypy.json
 
 # MAC
 .DS_Store
+
+# Large files
+# find * -size +50M | cat >> .gitignore
+5_Machine_Learning/projeto/data/POS_CASH_balance.csv
+5_Machine_Learning/projeto/data/credit_card_balance.csv
+5_Machine_Learning/projeto/data/installments_payments.csv
+5_Machine_Learning/projeto/data/application_train.csv
+5_Machine_Learning/projeto/data/bureau.csv
+5_Machine_Learning/projeto/data/previous_application.csv
+5_Machine_Learning/projeto/data/bureau_balance.csv
