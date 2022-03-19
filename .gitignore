@@ -134,6 +134,9 @@ dmypy.json
 # MAC
 .DS_Store
 
+# VSCode workspace
+.code-workspace
+
 # Large files
 # find * -size +50M | cat >> .gitignore
 5_Machine_Learning/projeto/data/POS_CASH_balance.csv
