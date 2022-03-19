@@ -1,98 +1,0 @@
-00:14:19	Jeffersin Bertunes:	Bom dia
-00:14:33	Let's Code:	Dia!
-00:22:57	Kamila Peres:	Bem vinda Larissa!
-00:31:15	Murylo Delega:	sim
-01:37:43	Let's Code:	#### Cebolinha
-
-Escreva um código que recebe uma string do usuário e mostra na tela sua versão como se fosse o Cebolinha falando (substituindo R por L).
-01:37:48	Let's Code:	#### Criptografia
-Faça uma função que criptografa uma mensagem substituindo cada letra pela letra oposta do dicionário:
-
-- 'a' por 'z'
-- 'b' por 'y'
-- 'c' por 'x'
-- ...
-01:38:35	Kamila Peres:	beleza...
-01:39:05	Let's Code:	#### Cebolinha
-Escreva um código que recebe uma string do usuário e mostra na tela sua versão como se fosse o Cebolinha falando (substituindo R por L).
-
-
-
-#### Validador de Email
-Crie uma função que recebe um email e valida se esse email é válido. Para ser válido, um email precisa:
-- Ter @
-- Ter algum . após o @
-
-
-
-#### Validador de Telefone
-Crie uma função que recebe um telefone e valida se esse telefone é válido. Para ser válido, um telefone precisa:
-- Ter apenas números
-- Ter ou 8 ou 9 dígitos
-01:39:17	Let's Code:	#### Criptografia
-Faça uma função que criptografa uma mensagem substituindo cada letra pela letra oposta do dicionário:
-- 'a' por 'z'
-- 'b' por 'y'
-- 'c' por 'x'
-- ...
-
-
-
-#### Bissexto
-A cada quase quatro anos temos um ano bissexto, o qual possui 29 dias em fevereiro. Para identificar se o ano é bissexto ou não no calendário gregoriano, observamos três critérios :
-- O ano pode ser dividido igualmente por 4, é um ano bissexto, a menos que:
-- O ano pode ser dividido igualmente por 100, NÃO é um ano bissexto, a menos que:
-- O ano também é igualmente divisível por 400. Então é um ano bissexto.
-Isso significa que no calendário gregoriano, os anos 2000 e 2400 *são* anos bissextos, enquanto 1800, 1900, 2100, 2200, 2300 e 2500 *não são* anos bissextos. Você recebe o ano e precisa escrever uma função para verificar se o ano é bissexto ou não.
-- bissexto -> Retorna True se ano **É** bissexto
-- bissexto -> Retorna False se ano **NÃO É** bissexto
-01:47:07	Lucas:	aqui, se abrir no chrome fica zuado
-01:47:10	Lucas:	tem que abrir no explorer
-02:04:45	Julia Dau:	email = input('digite um email: ' )arroba = email.find('@')if '@' in email and '.' in email[arroba:]:    print('valido')else:    print('invalido')
-02:09:28	Julia Dau:	def funcemail(email):    arroba = email.find('@')    if '@' in email and '.' in email[arroba:]:        return('valido')    else:        return('invalido')    print(funcemail(email = input('digite um email: ' )))
-02:27:33	Cibele Oliveira:	sim
-02:38:08	Cibele Oliveira:	sim
-03:01:56	Let's Code:	https://www.dropbox.com/s/wa7htwzzmeghoo2/meu_arquivo_alunos.rychard.txt?dl=1
-03:04:30	Let's Code:	https://www.dropbox.com/s/wa7htwzzmeghoo2/meu_arquivo_alunos.rychard.txt?dl=1
-03:05:48	Let's Code:	https://www.dropbox.com/s/wa7htwzzmeghoo2/meu_arquivo_alunos.ryc?dl=1
-03:07:56	Pedro:	é só apagar o parenteses
-03:08:01	Pedro:	vc consegue entrar
-03:08:16	Pedro:	isso mesmo professor
-03:17:16	Murylo Delega:	 File "<ipython-input-13-c9f28cf50053>", line 1    with open('meu_arquivo_alunos.rychard.txt') as arq:                                                       ^IndentationError: expected an indented block
-03:17:29	Murylo Delega:	with open('meu_arquivo_alunos.rychard.txt') as arq:
-03:18:45	Let's Code:	https://www.dropbox.com/s/wa7htwzzmeghoo2/meu_arquivo_alunos.ryc?dl=1
-03:19:16	Murylo Delega:	A turma 682 de Pytho Pro Ã© a melhor da Let's Code.
-03:21:07	Let's Code:	https://www.dropbox.com/s/58vv0hwo269shwe/682_aula_04.html?dl=1
-03:25:41	Cibele Oliveira:	sim
-03:27:16	Kamila Peres:	Para configurar a exibição de extensão de arquivo no Windows: Uma vez no Explorador de Arquivos (Windows Explorer), tudo o que você precisa fazer é clicar na guia “Exibir” no topo da janela e então, marcar a caixa da opção ” Extensões de nomes de arquivos”. 3. Uma vez feito isso, as extensões dos arquivos serão exibidas no Explorador de Arquivos.
-03:33:26	Cibele Oliveira:	simm
-03:33:45	Murylo Delega:	with open('meu_arquivo_alunos.rychard.txt') as arq:    primeira_linha = arq.readline()    print(primeira_linha)
-03:34:04	Gui Ferreira:	with open('/home/gui/Lets Code/meu_arquivo_alunos.ryc.txt') as arq:
-03:34:21	Cibele Oliveira:	with open ("meu_arquivo_alunos.ryc") as arq:
-    #print(arq.readline())
-    for linha in arq.readlines():
-        print(linha)
-03:49:09	Kamila Peres:	cai ): mas voltei..  meu pc deu uma travada, rs
-03:50:26	Let's Code:	https://www.dropbox.com/s/hrpfvno5o465hup/ibov_fechamento.txt?dl=1
-04:14:30	Let's Code:	https://docs.python.org/3/library/string.html
-04:16:05	Let's Code:	c.isdecimal(), c.isdigit(), or c.isnumeric().
-04:16:10	Let's Code:	https://docs.python.org/3/library/stdtypes.html
-04:26:53	Jeffersin Bertunes:	kkkk, boa
-04:27:07	Cibele Oliveira:	haha ótima dica
-04:27:30	Jeffersin Bertunes:	E como faz quem está sem dormir ? kkkkk
-04:27:49	Jeffersin Bertunes:	kkkkkkk
-04:33:13	Cibele Oliveira:	beleza
-04:53:14	Let's Code:	https://s3-sa-east-1.amazonaws.com/lcpi/0f8eacaa-25d5-462e-84f4-4937489552d4.csv
-04:58:13	Let's Code:	https://s3-sa-east-1.amazonaws.com/lcpi/0f8eacaa-25d5-462e-84f4-4937489552d4.csv
-05:01:23	Let's Code:	presente
-05:01:23	Murylo Delega:	Presente
-05:01:27	Pedro:	presente
-05:01:28	Marcos Alves:	Presente
-05:01:28	Gui Ferreira:	presente
-05:01:32	Pedro Campanatti Ostiz:	Presente
-05:01:32	Boris:	presente
-05:01:33	Jeffersin Bertunes:	presente
-05:01:35	Cibele Oliveira:	presente
-05:01:36	Vinicius Martins:	presente
-05:01:41	Julia Dau:	presente
-05:01:48	Lucas:	presente
