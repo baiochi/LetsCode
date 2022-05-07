@@ -157,6 +157,6 @@ dmypy.json
 5_Machine_Learning/projeto/data/bureau_balance.csv
 
 # media files
-.mp4
-.wav
+*.mp4
+*.wav
 
