@@ -1,0 +1,139 @@
+select * from cadastro;
+select * from atraso;
+select * from profissoes;
+select * from regioes;
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		1. Vamos verificar qual produto			******/
+/******		é o mais 'popular' no nosso banco.		******/
+/******		Para isso, vamos levantar a 			******/
+/******		volumetria de aparições					******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	produto
+	,count(*) as qtd
+from cadastro
+group by 1
+order by 1;
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		2. Vamos calcular a média de dias de	******/
+/******		atraso para cada mês de referência 		******/
+/******		presente nestas tabelas.	 			******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	to_char(cast(referencia as date), 'YYYY') || to_char(cast(referencia as date), 'MM') 
+	,round(avg(dias_atraso), 2)
+from atraso
+group by 1
+order by 1;
+
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		3. Podemos calcular a bad rate  		******/
+/******		para cada produto desta empresa 		******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	A.produto
+	,round(avg(case when B.dias_atraso = 0 then 0	else 1	end), 2) as bad_rate
+from cadastro as A
+left join atraso as B
+on A.num_cpf_cnpj = B.num_cpf_cnpj
+group by 1;
+
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		4. Podemos calcular a bad rate de 		******/
+/******		cada profissao das pessoas.		 		******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	B.profissao
+	,round(avg(case when C.dias_atraso = 0 then 0	else 1	end), 2) as bad_rate
+from cadastro as A
+left join profissoes as B
+on A.profissao = B.codigo
+
+left join atraso as C
+on A.num_cpf_cnpj = C.num_cpf_cnpj
+group by 1;
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		5. Podemos calcular a bad rate também	******/
+/******		por estado brasileiro.			 		******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	B.uf
+	,round(avg(case when C.dias_atraso = 0 then 0	else 1	end), 2) as bad_rate
+from cadastro as A
+left join regioes as B
+on A.estado = B.codigo
+
+left join atraso as C
+on A.num_cpf_cnpj = C.num_cpf_cnpj
+group by 1;
+
+/* Ou por região */
+select
+	B.regiao
+	,round(avg(case when C.dias_atraso = 0 then 0	else 1	end), 2) as bad_rate
+from cadastro as A
+left join regioes as B
+on A.estado = B.codigo
+
+left join atraso as C
+on A.num_cpf_cnpj = C.num_cpf_cnpj
+group by 1;
+
+
+/*********************************************************/
+/*********************************************************/
+/******												******/
+/******		Em geral realizamos estas análises		******/
+/******		por meio do python com o que chamamos	******/
+/******		de cubo. Que seria basicamente um 		******/
+/******		concatenado de todos os dados			******/
+/******		necessários para as análises.			******/
+/******												******/
+/*********************************************************/
+/*********************************************************/
+select
+	A.produto
+	,B.regiao
+	,C.profissao
+	,to_char(cast(D.referencia as date), 'YYYY') || to_char(cast(D.referencia as date), 'MM') as anomes
+	
+	,sum(D.dias_atraso)
+	,count(*) as qtd
+	,sum(case when D.dias_atraso = 0 then 0	else 1	end) as soma_bad_rate
+--	,round(avg(case when D.dias_atraso = 0 then 0	else 1	end), 2) as bad_rate
+
+from cadastro as A
+left join regioes as B
+on A.estado = B.codigo
+
+left join profissoes as C
+on A.profissao = C.codigo
+
+left join atraso as D
+on A.num_cpf_cnpj = D.num_cpf_cnpj
+group by 1, 2, 3, 4;

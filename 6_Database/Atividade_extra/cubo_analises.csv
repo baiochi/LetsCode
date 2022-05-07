@@ -1,0 +1,119 @@
+"produto","uf","regiao","profissao","anomes","sum_dias_atraso","soma_bad_rate","qtd"
+"veiculo","ES","Sudeste","Meteorologista","202009",86,1,1
+"imobiliario","PR","Sul","Arquiteturo",NULL,NULL,1,1
+"crediario","GO","Centro-Oeste","Cientista da Computacao",NULL,NULL,1,1
+"crediario","BA","Nordeste","Jornalista",NULL,NULL,1,1
+"crediario","SC","Sul","Arquiteturo","202001",0,0,1
+"crediario","PB","Nordeste","Economia",NULL,NULL,1,1
+"veiculo","PA","Norte","Quimico",NULL,NULL,1,1
+"imobiliario","RN","Nordeste","Advogado",NULL,NULL,1,1
+"veiculo","RS","Sul","Engenheiro",NULL,NULL,1,1
+"veiculo","AM","Norte","Geofisico",NULL,NULL,1,1
+"consignado","PR","Sul","Arquiteturo",NULL,NULL,1,1
+"imobiliario","MG","Sudeste","Medico",NULL,NULL,1,1
+"veiculo","GO","Centro-Oeste","Meteorologista",NULL,NULL,1,1
+"consignado","MS","Centro-Oeste","Cientista da Computacao","202010",0,0,1
+"consignado","MA","Nordeste","Medico",NULL,NULL,1,1
+"consignado","PE","Nordeste","Meteorologista",NULL,NULL,1,1
+"crediario","BA","Nordeste","Fisico",NULL,NULL,1,1
+"veiculo","AL","Nordeste","Arquiteturo",NULL,NULL,1,1
+"crediario","AP","Norte","Arquiteturo","202007",0,0,1
+"consignado","SC","Sul","Meteorologista",NULL,NULL,1,1
+"imobiliario","RO","Norte","Designer de Interiores",NULL,NULL,1,1
+"consignado","PA","Norte","Sociologo",NULL,NULL,1,1
+"veiculo","PR","Sul","Advogado",NULL,NULL,1,1
+"veiculo","MA","Nordeste","Estatístico",NULL,NULL,1,1
+"consignado","MG","Sudeste","Meteorologista",NULL,NULL,2,2
+"veiculo","AM","Norte","Cientista da Dados",NULL,NULL,1,1
+"consignado","TO","Norte","Enfermeiro",NULL,NULL,1,1
+"imobiliario","SP","Sudeste","Administrador",NULL,NULL,1,1
+"veiculo","PR","Sul","Sociologo","202005",0,0,1
+"consignado","MA","Nordeste","Cientista da Computacao",NULL,NULL,1,1
+"crediario","MT","Centro-Oeste","Matemático",NULL,NULL,1,1
+"veiculo","TO","Norte","Cientista da Computacao",NULL,NULL,1,1
+"crediario","MA","Nordeste","Jornalista",NULL,NULL,1,1
+"veiculo","MT","Centro-Oeste","Administrador",NULL,NULL,1,1
+"veiculo","RS","Sul","Matemático",NULL,NULL,1,1
+"crediario","MA","Nordeste","Medico",NULL,NULL,1,1
+"consignado","AL","Nordeste","Geólogo",NULL,NULL,1,1
+"crediario","SE","Nordeste","Cientista da Computacao","202003",0,0,1
+"veiculo","SC","Sul","Designer de Interiores","202006",0,0,1
+"veiculo","SP","Sudeste","Estatístico",NULL,NULL,1,1
+"consignado","GO","Centro-Oeste","Geólogo",NULL,NULL,1,1
+"imobiliario","MA","Nordeste","Geofisico",NULL,NULL,1,1
+"crediario","MA","Nordeste","Sociologo",NULL,NULL,1,1
+"crediario","BA","Nordeste","Meteorologista",NULL,NULL,1,1
+"crediario","AP","Norte","Cientista da Dados",NULL,NULL,1,1
+"consignado","PB","Nordeste","Arquiteturo",NULL,NULL,1,1
+"consignado","PE","Nordeste","Economia",NULL,NULL,1,1
+"veiculo","ES","Sudeste","Designer de Interiores",NULL,NULL,1,1
+"imobiliario","TO","Norte","Jornalista","202003",0,0,1
+"imobiliario","AP","Norte","Advogado",NULL,NULL,1,1
+"veiculo","SC","Sul","Enfermeiro",NULL,NULL,1,1
+"crediario","RR","Norte","Jornalista","202008",0,0,1
+"consignado","MS","Centro-Oeste","Quimico",NULL,NULL,1,1
+"consignado","RJ","Sudeste","Cientista da Computacao",NULL,NULL,1,1
+"consignado","MA","Nordeste","Fisico","202004",0,0,1
+"consignado","TO","Norte","Fisico","202004",128,1,1
+"veiculo","DF","Centro-Oeste","Matemático",NULL,NULL,1,1
+"imobiliario","PE","Nordeste","Fisico",NULL,NULL,2,2
+"veiculo","ES","Sudeste","Geofisico",NULL,NULL,1,1
+"imobiliario","CE","Nordeste","Cientista da Dados",NULL,NULL,1,1
+"imobiliario","RN","Nordeste","Geólogo",NULL,NULL,1,1
+"imobiliario","PR","Sul","Administrador",NULL,NULL,1,1
+"imobiliario","GO","Centro-Oeste","Designer de Interiores",NULL,NULL,1,1
+"consignado","PI","Nordeste","Advogado",NULL,NULL,1,1
+"veiculo","AP","Norte","Cientista da Dados","202010",41,1,1
+"crediario","MS","Centro-Oeste","Geofisico","202012",0,0,1
+"consignado","DF","Centro-Oeste","Quimico",NULL,NULL,1,1
+"veiculo","SE","Nordeste","Sociologo","202006",23,1,1
+"consignado","PE","Nordeste","Advogado","202006",0,0,1
+"crediario","PR","Sul","Geofisico",NULL,NULL,1,1
+"consignado","RN","Nordeste","Advogado",NULL,NULL,1,1
+"imobiliario","ES","Sudeste","Geólogo","202004",152,1,1
+"veiculo","AC","Norte","Medico","202002",0,0,1
+"consignado","PR","Sul","Economia",NULL,NULL,1,1
+"consignado","AP","Norte","Geólogo",NULL,NULL,1,1
+"consignado","SP","Sudeste","Administrador",NULL,NULL,1,1
+"veiculo","AP","Norte","Geofisico",NULL,NULL,1,1
+"veiculo","RN","Nordeste","Geofisico","202009",41,1,1
+"consignado","RR","Norte","Engenheiro",NULL,NULL,1,1
+"veiculo","RN","Nordeste","Advogado",NULL,NULL,1,1
+"crediario","GO","Centro-Oeste","Fisico",NULL,NULL,1,1
+"imobiliario","AP","Norte","Matemático","202005",125,1,1
+"consignado","ES","Sudeste","Economia","202009",136,1,1
+"crediario","DF","Centro-Oeste","Engenheiro","202009",146,1,1
+"consignado","PA","Norte","Enfermeiro",NULL,NULL,1,1
+"crediario","MT","Centro-Oeste","Arquiteturo","202012",14,1,1
+"veiculo","AM","Norte","Enfermeiro","202012",34,1,1
+"imobiliario","MG","Sudeste","Meteorologista","202002",0,0,1
+"crediario","SE","Nordeste","Sociologo",NULL,NULL,1,1
+"imobiliario","PA","Norte","Estatístico",NULL,NULL,1,1
+"veiculo","SE","Nordeste","Designer de Interiores","202003",173,1,1
+"crediario","PI","Nordeste","Advogado","202011",0,0,1
+"imobiliario","MG","Sudeste","Engenheiro",NULL,NULL,1,1
+"crediario","PE","Nordeste","Jornalista",NULL,NULL,1,1
+"crediario","AM","Norte","Sociologo",NULL,NULL,1,1
+"imobiliario","RS","Sul","Engenheiro",NULL,NULL,1,1
+"consignado","MS","Centro-Oeste","Sociologo",NULL,NULL,1,1
+"consignado","MG","Sudeste","Medico",NULL,NULL,1,1
+"consignado","MS","Centro-Oeste","Geólogo",NULL,NULL,1,1
+"crediario","GO","Centro-Oeste","Meteorologista",NULL,NULL,1,1
+"veiculo","PR","Sul","Matemático",NULL,NULL,1,1
+"crediario","PR","Sul","Quimico",NULL,NULL,1,1
+"crediario","PA","Norte","Geólogo",NULL,NULL,1,1
+"crediario","SE","Nordeste","Designer de Interiores",NULL,NULL,1,1
+"veiculo","CE","Nordeste","Meteorologista",NULL,NULL,1,1
+"imobiliario","MT","Centro-Oeste","Medico","202011",140,1,1
+"imobiliario","BA","Nordeste","Enfermeiro",NULL,NULL,1,1
+"imobiliario","RJ","Sudeste","Enfermeiro",NULL,NULL,1,1
+"consignado","PE","Nordeste","Sociologo","202009",96,1,1
+"crediario","DF","Centro-Oeste","Fisico",NULL,NULL,1,1
+"veiculo","MA","Nordeste","Cientista da Computacao","202008",0,0,1
+"imobiliario","RJ","Sudeste","Cientista da Computacao","202006",0,0,1
+"consignado","MG","Sudeste","Advogado","202004",36,1,1
+"crediario","GO","Centro-Oeste","Economia",NULL,NULL,1,1
+"imobiliario","SP","Sudeste","Medico",NULL,NULL,1,1
+"consignado","PB","Nordeste","Geólogo",NULL,NULL,1,1
+"imobiliario","AP","Norte","Engenheiro",NULL,NULL,1,1
+"consignado","SE","Nordeste","Quimico",NULL,NULL,1,1
