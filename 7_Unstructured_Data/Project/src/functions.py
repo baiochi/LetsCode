@@ -187,7 +187,7 @@ def create_hand_gesture(frame_list:list, connections=441, hand_label='') -> np.n
 # Process results
 def process_results(landmarks_results, verbose=False):
     left_hand_gesture=None
-    right_hand_list=None
+    right_hand_gesture=None
     # Process results
     left_hand_list, right_hand_list = get_hand_coordinates(landmarks_results, verbose)
     # Create gesture arrays
@@ -210,3 +210,50 @@ def make_prediction(hand_gesture:np.ndarray, verbose=False) -> str:
 	predicted_sign = min(predictions, key=predictions.get)
 	return predicted_sign
 
+def get_video_frames(file_name):
+    
+    frame_list = []
+    cap = cv2.VideoCapture(file_name)
+    pbar = tqdm(desc='Reading frames', total=cap.get(cv2.CAP_PROP_FRAME_COUNT), colour='#f5b324')
+    while cap.isOpened():
+        # Read frame
+        ret, frame = cap.read()
+        if not ret:
+            pbar.close()
+            break
+        # Store frame
+        frame_list.append(frame)
+        pbar.update(1)
+    cap.release()
+    
+    return frame_list
+
+def generate_reference_database(files:list, path:str, model) -> dict:
+    
+    # Store gesture arrays
+    reference_signs = {}
+        
+    # Loop through the video list
+    for file_name in files:
+        
+        # Extra sign name
+        sign = file_name[12:-4]
+
+        # Read frames
+        frame_list = get_video_frames(path + '/' + file_name)
+
+        # Process frames with mediapipe Hands
+        results_list = []
+        for frame in tqdm(frame_list, 
+                            desc=f'Learning sign {sign}', 
+                            total=len(frame_list),
+                            colour='#00fafd'):
+            results_list.append(model.process(frame))
+
+        # Create and store gesture array
+        reference_signs[sign], _ = process_results(results_list)
+
+        # Dump memory
+        frame_list.clear(); results_list.clear();
+
+    return reference_signs
