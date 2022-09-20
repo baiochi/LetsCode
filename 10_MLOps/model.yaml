@@ -1,0 +1,62 @@
+Resources:
+  RandomForestModel:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: RandomForestModel
+      Role: !GetAtt RandomForestRole.Arn
+      Runtime: python3.7
+      Handler: index.my_handler
+      Code:
+        ZipFile: |
+          def my_handler(event, context):
+
+            import logging
+            import joblib
+            import numpy as np
+            import pandas as pd
+            from sklearn.datasets import load_boston
+            from sklearn.ensemble import RandomForestRegressor
+            from sklearn.model_selection import train_test_split
+            #Utilizando Dataset Boston 
+            data = load_boston()
+
+            #Split de Teste E treino
+            X_train, X_test, y_train, y_test = train_test_spli(data.data,              data.target, test_size=025, random_state=42)
+
+            #Treino - Dataframe
+            trainX = pd.DataFrame(X_train, columns=datafeature_names)
+            trainX['target'] = y_train
+
+            #Teste Dataframe
+            testX = pd.DataFrame(X_test, columns=datafeature_names)
+            testX['target'] = y_test
+
+            def train_model(n_estimators, min_samples_leaf):
+
+                #Features do Dataset
+                features = 'CRIM ZN INDUS CHAS NOX RM AGE DIS RAD     TAX         PTRATIO B LSTAT'
+
+                X_train = trainX[features.split()]
+                X_test = testX[features.split()]
+                y_train = trainX['target']
+                y_test = testX['target']
+
+                # Treino do Modelo
+                model = RandomForestRegressor(
+                    n_estimators=n_estimators,
+                    min_samples_leaf=min_samples_leaf,
+                    n_jobs=-1
+                )
+
+                model.fit(X_train, y_train)
+
+  RandomForestRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: RandomForestRole
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole

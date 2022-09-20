@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-0909'
+Resources:
+    HelloLambdaFunction:
+        Type: AWS:Lambda:Function
+        Proprieties:
+            FunctionName: HelloLambdaFunction735
+            Role: !GetAtt HelloLambdaRoles.Arn
+            Runtime: python3.7
+            Handler: "index.my_handler"
+            Code:
+                ZipFile: |
+                def mu_handler(event, context):
+                    message = 'Funcao lambda criada pelo CloudFormation'
+                    return message
+    HelloLambdaRoles:
+        Type: AWS:IAM:Role
+        Proprieties:
+            RoleName: HelloLambdaRoles
+            AssumeRolePolicyDocument:
+                Statement:
+                    - Effect: Allow
+                        Principal:
+                            Service: lambda.amazonaws.com
+                        Action: st:AssumeRole
+S3Bucket:
+    Type: AWS:S3:Bucket
+    DeletionPolicy: Retain
+    Proprieties:
+                        
+                        
+                        
+                        

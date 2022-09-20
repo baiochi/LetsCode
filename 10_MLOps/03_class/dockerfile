@@ -1,0 +1,23 @@
+FROM python:3.7
+
+# Create app directory
+RUN mkdir /app
+
+# Set workdir
+WORKDIR /app 
+
+# Copy all files inside image
+COPY . /app
+
+# Update pip
+RUN python -m pip install --upgrade pip
+
+# Install requirements
+RUN pip install -r requirements.txt
+
+# Expose app in specific port
+EXPOSE 5000
+
+# Execute init command for app.py
+CMD ["python", "app.py"]
+

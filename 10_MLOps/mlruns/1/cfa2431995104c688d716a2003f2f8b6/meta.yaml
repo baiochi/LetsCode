@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/baiochi/OneDrive/GitHub/LetsCode/10_MLOps/mlruns/1/cfa2431995104c688d716a2003f2f8b6/artifacts
+end_time: 1658534073087
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: cfa2431995104c688d716a2003f2f8b6
+run_uuid: cfa2431995104c688d716a2003f2f8b6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1658534058699
+status: 4
+tags: []
+user_id: baiochi

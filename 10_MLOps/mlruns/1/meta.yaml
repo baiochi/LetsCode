@@ -1,0 +1,4 @@
+artifact_location: file:///Users/baiochi/OneDrive/GitHub/LetsCode/10_MLOps/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: DecisionTreeClassifier test
