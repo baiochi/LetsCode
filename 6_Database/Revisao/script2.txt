@@ -1,0 +1,196 @@
+select * from film limit 10
+
+SELECT
+distinct
+    RATING
+    ,CAST(Rating AS VARCHAR(10)) as rating
+    ,case when CAST(Rating AS VARCHAR(10)) is null then 'Sem Classificação' else CAST(Rating AS VARCHAR(10)) end Classificacao
+    ,COALESCE(CAST(Rating AS VARCHAR(10)),'Sem classificação') AS ColunaDistinct
+FROM film
+
+
+select distinct 
+address2,
+coalesce(address2, 'Sem complemento') as Complemento from address
+order by 1
+
+-- TO_DATE para converter um texto em data
+select 'Conversao de data 1' as Texto, TO_DATE('14/11/1985','DD/MM/YYYY') as DataAniversario
+
+UNION
+
+select 'Conversao de data 2' as Texto, TO_DATE('11-14-1985','MM-DD-YYYY') as DataAniversario
+
+
+select * from city
+PK -> Primary Key (identidade)
+Fk -> Foreign Key (chave estrangeira)
+
+select * from country
+PK -> country_id (chave primaria - identidade)
+
+select
+    city_id As CodigoCidade
+    ,city
+    ,a.country_id
+    ,country
+FROM city AS A
+JOIN country AS B on a.country_id = b.country_id
+
+select
+    city_id As CodigoCidade
+    ,city
+    ,a.country_id
+    ,country
+FROM country AS A
+INNER JOIN city AS B on a.country_id = b.country_id --> e necessario que exista relacao entre as duas tabelas, ou seja, as chaves tem que existir em ambas
+WHERE a.COUNTRY_ID IN (110, 111)
+
+SELECT * FROM COUNTRY ORDER BY 1 DESC
+SELECT * FROM CITY WHERE COUNTRY_ID IN (110, 111)
+--INSERT INTO COUNTRY VALUES (111, 'Polo Sul', '2022-07-26')
+
+select
+    --city_id As CodigoCidade
+    COALESCE(city, 'Sem cidade cadastrada') as city
+   ,A.COUNTRy_ID
+    ,country
+FROM country AS A
+RIGHT JOIN city AS B on a.country_id = b.country_id --> e necessario que exista relacao entre as duas tabelas, ou seja, as chaves tem que existir em ambas
+--WHERE a.COUNTRY_ID IN (110, 111)
+ORDER BY 2 DESC
+
+select
+    --city_id As CodigoCidade
+    COALESCE(city, 'Sem cidade cadastrada') as city
+   ,A.COUNTRy_ID
+    ,country
+FROM city AS A
+RIGHT JOIN country AS B on a.country_id = b.country_id --> e necessario que exista relacao entre as duas tabelas, ou seja, as chaves tem que existir em ambas
+--WHERE a.COUNTRY_ID IN (110, 111)
+ORDER BY 2 DESC
+
+SELECT max(country_id ) FROM country
+
+select * from city
+order by city_id desc 
+
+insert into city values (601, 'Betim', 111, '2022-06-26')
+
+
+select
+    --city_id As CodigoCidade
+    COALESCE(city, 'Sem cidade cadastrada') as city
+    ,CITY
+   ,A.COUNTRy_ID
+    ,country
+FROM country AS A
+LEFT JOIN city AS B on a.country_id = b.country_id --> e necessario que exista relacao entre as duas tabelas, ou seja, as chaves tem que existir em ambas
+WHERE b.country_id is null
+ORDER BY 3 DESC
+
+select
+    --city_id As CodigoCidade
+    COALESCE(city, 'Sem cidade cadastrada') as city
+    ,CITY
+   ,A.COUNTRy_ID
+    ,country
+FROM country AS A
+FULL OUTER JOIN city AS B on a.country_id = b.country_id --> e necessario que exista relacao entre as duas tabelas, ou seja, as chaves tem que existir em ambas
+--WHERE b.country_id is null
+ORDER BY 3 DESC
+
+select 
+    
+    cus.first_name || ' ' || cus.last_name as NomeLocatario
+    ,film.title as NomeFilme
+    ,ren.RENTAL_DATE AS DataLocacao
+    ,ren.return_date as DataDevolucao
+    ,staff.first_name || ' ' || staff.Last_Name AS funcionario
+from rental AS ren
+INNER JOIN CUSTOMER AS cus ON cus.customer_id = ren.customer_id
+INNER JOIN INVENTORY AS INV on ren.inventory_id = inv.inventory_id
+INNER JOIN FILM AS FILM on inv.film_id = film.film_id 
+INNER JOIN staff as staff on staff.staff_id = ren.staff_id
+
+
+SELECT * FROM RENTAL
+
+select * from inventory
+
+
+-- CTE -> Common Table Expression
+WITH ConsultaCTE AS(
+    select 
+
+        cus.first_name || ' ' || cus.last_name as NomeLocatario
+        ,film.title as NomeFilme
+        ,ren.RENTAL_DATE AS DataLocacao
+        ,ren.return_date as DataDevolucao
+        ,staff.first_name || ' ' || staff.Last_Name AS funcionario
+    from rental AS ren
+    INNER JOIN CUSTOMER AS cus ON cus.customer_id = ren.customer_id
+    INNER JOIN INVENTORY AS INV on ren.inventory_id = inv.inventory_id
+    INNER JOIN FILM AS FILM on inv.film_id = film.film_id 
+    INNER JOIN staff as staff on staff.staff_id = ren.staff_id
+    )
+ 
+ SELECT 
+    funcionario
+    ,count(*) as QtdLocacoesRealizadas
+ FROM ConsultaCTE
+ GROUP BY funcionario
+ 
+ select avg(amount) from payment
+ 
+ -- Subqueries
+ select * from payment
+ where amount < ( select avg(amount) from payment)
+ 
+ 
+ select 
+    rating
+    ,avg(rental_rate) as CustoMedioLocacao
+ from film
+ group by rating
+ 
+ select 
+    title
+    ,rental_rate as Valorfilme
+    ,(select * from ..... )ValorMedio?
+ from film as a
+ where rental_rate < 
+    (select avg(rental_rate) from film as b where a.rating = b.rating )
+    
+    
+WITH CustoMedioCTE AS (
+ select 
+    rating
+    ,avg(rental_rate) as CustoMedioLocacao
+ from film
+ group by rating)
+ 
+, SubGrupoCTE AS(
+    SELECT
+        title Titulo
+        ,rental_rate  Valorfilme
+        ,CustoMedioLocacao      
+        ,a.rating 
+    FROM FILM  A
+    INNER JOIN CustoMedioCTE  B on a.rating = b.rating
+   where a.rental_rate < customediolocacao)
+   
+select rating, max(custoMedioLocacao), sum(custoMedioLocacao) from SubGrupoCTE  a
+group by rating
+
+WITH RatingCTE AS(
+SELECT 
+    rating
+    ,count(*) as QtdRating
+FROM film
+group by rating)
+select
+    rating
+    ,QtdRating
+    ,rank() over (order by QtdRating DESC) as Rank
+from ratingCTE

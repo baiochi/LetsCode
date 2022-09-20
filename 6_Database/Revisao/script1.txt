@@ -1,0 +1,176 @@
+SELECT -- QUAIS COLUNAS QUEREMOS TRAZER
+*
+FROM -- DE ONDE NOS QUEREMOS TRAZER
+
+SELECT  * 
+FROM ACTOR
+LIMIT 10  --> LIMITAR A QUANTIDADE DE REGISTROS DA CONSULTA
+
+SELECT
+    first_name AS PrimeiroNome --> AS permite renomear as colunas
+    ,last_name AS UltimoNome
+FROM
+    actor
+    
+    
+SELECT
+    first_name AS PrimeiroNome --> AS permite renomear as colunas
+    ,last_name AS UltimoNome
+    ,first_name || ' ' || last_name AS NomeCompleto
+FROM
+    actor
+    
+SELECT * FROM FILM
+
+SELECT
+    DISTINCT release_year, rating -- distinct, comando utilizado para trazer os registros unicos da tabela
+FROM 
+    FILM
+    
+SELECT
+         CASE WHEN rating = 'PG-13' OR rental_duration = 7 THEN 'INFANTIL' 
+              WHEN rating = 'R' THEN 'ADULTO'
+              WHEN rating = 'G' THEN 'Grande'
+              WHEN rating = 'NC-17' THEn 'Adolescentes'
+              ELSE 'nenhum desses' 
+        END AS Classificacao
+        ,rating
+        ,rental_duration
+        ,*
+FROM
+    FILM
+    
+SELECT -- TRAZ AS COLUNAS
+distinct rental_rate, rating
+FROM  film -- IDENTIFICA DE ONDE ESTAMOS TRAZENDO
+WHERE -- FILTRA OS REGISTROS RETORNADOS PELA QUERY
+rating = 'R' AND rental_rate < 4.99
+
+SELECT 
+distinct rental_rate, rating
+FROM  film 
+WHERE 
+rating = 'R' OR rental_rate < 4.99
+
+SELECT 
+*
+FROM FILM
+WHERE 
+--RATING <> 'G' 
+ RATING IS NOT NULL
+
+1000 REGISTROS
+627 REGISTROS
+822 REGISTR
+
+
+SELECT 
+    first_name
+    ,last_name
+    ,upper(first_name) as NomeMaiusculo
+    ,lower(first_name) as NomeMinusculo
+FROM CUSTOMER
+WHERE upper(first_name) LIKE 'B%A%A'
+
+SELECT * FROM
+CITY
+WHERE COUNTRY_ID NOT IN (87 , 31, 25)
+
+SELECT 
+    title
+    ,description
+    ,release_year
+    ,rental_rate
+    ,rating
+FROM
+FILM
+-- WHERE 
+ORDER BY RENTAL_RATE DESC, title -- PADRAO -> menor para o maior, DESC -> Maior para o menor, ASC - menor para o maior
+
+
+select 
+    customer_id
+    ,amount
+    ,staff_id
+    ,payment_date
+from payment
+order by 3 desc, 1
+
+SELECT
+FROM
+WHERE
+ORDER BY
+
+SELECT 
+COUNT(*) --> CONTA A QUANTIDADE DE REGISTROS
+FROM FILM
+
+SELECT 
+count(*) --> total de registros da tabela
+,COUNT(RATING) --> CONTA A QUANTIDADE DE REGISTROS para uma determinada coluna (nao nulos)
+,count(distinct rating) --> conta a quantidade de registros unicos daquela coluna
+FROM FILM
+
+SELECT
+    rating
+    ,count(rating)
+    ,count(*)
+FROM
+    film
+GROUP BY rating
+
+select * from film
+
+
+select 
+    language_id
+    ,rating
+    ,count(*)
+from film
+    group by language_id, rating
+order by 1, 2
+
+select 
+    customer_id
+    ,sum(amount) as ValorPago
+from payment
+group by customer_id
+order by valorPago desc
+limit 10
+
+select 
+customer_id
+,max(payment_date) as Locacaorecente
+,min(payment_date) as locacaoantiga
+from payment
+group by customer_id
+
+select
+    customer_id
+    ,sum(amount) as valorPago
+from
+    payment
+where     staff_id = 2--> condicacao a nivel de linha
+group by customer_id
+having sum(amount) > 100
+
+select * from payment
+
+select 
+first_name
+,count(*)
+from actor
+group by first_name
+having count(*) > 1
+order by 2 desc
+
+select * from payment
+where 
+--amount between 1 and 2
+payment_date between '2007-02-15' and '2007-02-16'
+
+
+select 
+sum(amount) --> soma
+,avg(amount) --> media
+from payment
